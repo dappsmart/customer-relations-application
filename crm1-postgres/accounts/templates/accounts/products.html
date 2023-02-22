@@ -1,0 +1,59 @@
+{% extends 'accounts/main.html' %}
+
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+</head>
+<body>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<table class="table table-dark">
+		<thead>
+					
+		</thead>
+		<tbody>
+		
+		  
+		  <table class="table table-hover table-primary">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+              
+
+              {% for i in products %}
+              
+              <tr class="table-danger">
+              <tr class="table table-hover table-warning">
+                <th scope="row">{{i.name}}</th>
+                <td>{{i.category}}</td>
+                <td>{{i.price}}</td>
+                
+              </tr>
+              {% endfor %}
+              
+            
+		  
+		</tbody>
+	  </table>
+</body>
+</html>
+
+{% endblock %}

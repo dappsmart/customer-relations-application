@@ -1,0 +1,163 @@
+{% extends 'accounts/main.html' %}
+
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey">
+    <div class="row margin-bottom-10">
+        <div class="col-md-4 col-sm-6">
+            <div class="servive-block servive-block-grey">
+                <i class="icon-2x color-light fa fa-bell-o"></i>
+                <h2 class="heading-md">Customer:{{customer.name}}</h2>
+				<hr>
+                
+                <a button type="button" class="btn btn-info" href="{% url 'customer' customer.id %}">Update Customer</a></Button>
+				
+				<hr/>
+                
+				<a button type="button" class="btn btn-info" href="{% url 'create_order' customer.id %}">Place Order</a></Button>
+				
+				<br/>	
+              
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="servive-block servive-block-yellow">
+                <i class="icon-2x color-light fa fa-envelope"></i>
+                <h2 class="heading-md">Contact Information</h2>
+				
+                <p>E-mail:   {{customer.email}} </p>
+
+				<p>Phone:   {{customer.phone}} </p>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="servive-block servive-block-dark-blue">            
+                <i class="icon-2x color-light fa fa-gift"></i>
+                <h2 class="heading-md">Total Orders</h2>
+                <h3 class="card-title">{{orders.count}}</h3>
+                <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus</p>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="row margin-bottom-10">
+        <div class="col-sm-6">
+            <div class="servive-block servive-block-purple">
+                <i class="icon-2x color-light fa fa-globe"></i>
+                <h2 class="heading-md">Purple Box</h2>
+                <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus. At vero eos et accusamus et iusto odio dignissimos ducimus qui.</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="servive-block rounded servive-block-aqua">
+                <i class="icon-2x color-light fa fa-taxi"></i>
+                <h2 class="heading-md">Aqua Box</h2>
+                <p>Donec id elit non mi porta gravida at eget metus id elit mi egetine. Fusce dapibus. At vero eos et accusamus et iusto odio dignissimos ducimus qui.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<div class="container">
+    <br/>
+	<div class="row justify-content-center">
+                        <div class="col-18 col-lg-16 col-lg-12">
+                            <form class="card card-sm">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
+                                        
+                                    </div>
+                                    <!--end of col-->
+                                          
+                                    
+                                    <!--end of col-->
+                                    <div class="col-lg">
+                                        <form method="get" action="">
+                                            {{myFilter.form}}
+                                            
+                                            <button class="btn btn-sm btn-success" type="submit">Search</button>
+                                        </form>    
+                                    </div>
+                                    <!--end of col-->
+                                </div>
+                            </form>
+                        </div>
+                        <!--end of col-->
+                    </div>
+</div>
+
+</head>
+
+<hr>
+	
+<body>
+	
+	
+	
+	
+	
+	<table class="table table-hover table-dark">
+		<thead>
+		  <tr class="bg-info">
+			
+			<th scope="col">Product</th>
+			<th scope="col">Note</th>
+			<th scope="col">Date Ordered</th>
+			<th scope="col">Status</th>
+			<th scope="col">Update</th>
+			<th scope="col">Remove</th>
+		  </tr>
+
+          {% for order in orders%}      
+
+          <tr>
+            
+            <td>{{order.product}}</td>            
+            <td>{{order.note}}</td>
+            <td>{{order.date_created}}</td>
+            <td>{{order.status}}</td>
+            <td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
+            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Remove</a></td>            
+          </tr>
+
+          {% endfor %}
+
+		</thead>
+		<tbody>
+		  <tr>
+			
+		  </tr>
+		  
+		  <tr class="bg-warning">
+			
+		  </tr>
+		  <tr>
+			
+		  </tr>
+		</tbody>
+	  </table>
+</body>
+</html>
+
+
+
+{% endblock %}
